@@ -3,78 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Motocentro Salazar</title>
+<title>Motocentro Salazar - Fidelidad</title>
 
 <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#111;
-color:white;
-text-align:center;
+    font-family: Arial, sans-serif;
+    background:#111;
+    color:white;
 }
 
-header{
-padding:40px 20px;
-background:#c00000;
+.header{
+    text-align:center;
+    padding:30px 20px;
+    background:linear-gradient(135deg,#c00000,#7a0000);
 }
 
-h1{
-margin:0;
+.logo{
+    width:140px;
+    max-width:80%;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+.subtitle{
+    margin-top:10px;
+    opacity:0.9;
 }
 
 .container{
-padding:30px;
+    padding:20px;
+    max-width:600px;
+    margin:auto;
 }
 
 .card{
-background:white;
-color:black;
-margin:20px;
-padding:20px;
-border-radius:15px;
+    background:white;
+    color:black;
+    border-radius:20px;
+    padding:20px;
+    margin-top:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+.card h2{
+    margin-bottom:15px;
+}
+
+.reward{
+    padding:12px 0;
+    border-bottom:1px solid #ddd;
+}
+
+.reward:last-child{
+    border-bottom:none;
 }
 
 .btn{
-display:inline-block;
-background:#c00000;
-color:white;
-padding:15px 25px;
-border-radius:10px;
-text-decoration:none;
-margin-top:15px;
+    display:block;
+    text-align:center;
+    background:#c00000;
+    color:white;
+    text-decoration:none;
+    padding:15px;
+    border-radius:12px;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+.btn:hover{
+    opacity:0.9;
 }
 </style>
 </head>
 
 <body>
-<div style="text-align:center; margin-top:20px;">
-  <img src="logo.png" style="width:120px; border-radius:15px;">
-  <h1>Motocentro Salazar</h1>
-  <p>Programa de Fidelidad</p>
-</div>
-<header>
+
+<div class="header">
+
+<img src="Logo.png" alt="Motocentro Salazar" class="logo">
+
 <h1>Motocentro Salazar</h1>
-<p>Programa de Fidelidad</p>
-</header>
+
+<p class="subtitle">
+Programa de Fidelidad
+</p>
+
+</div>
 
 <div class="container">
 
 <div class="card">
-<h2>🎁 Recompensas</h2>
 
-<p>4 sellos → Llavero gratis</p>
-<p>8 sellos → 10% descuento en aceite</p>
-<p>10 sellos → Cambio de aceite + filtro gratis</p>
+<h2>🎁 Tus Recompensas</h2>
+
+<div class="reward">
+4 sellos → Llavero gratis
 </div>
 
-<a class="btn" href="#">
+<div class="reward">
+8 sellos → 10% de descuento en aceite
+</div>
+
+<div class="reward">
+10 sellos → Cambio de aceite + filtro gratis
+</div>
+
+</div>
+
+<a href="#" class="btn">
 Registrarme
 </a>
 
-<br><br>
-
-<a class="btn" href="#">
+<a href="#" class="btn">
 Iniciar sesión
 </a>
 

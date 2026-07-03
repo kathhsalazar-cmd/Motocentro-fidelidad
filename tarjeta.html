@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Tarjeta de Fidelidad</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    padding:20px;
+    font-family:Arial,sans-serif;
+    background:#111;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.card{
+    background:white;
+    width:100%;
+    max-width:420px;
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+.logo{
+    width:180px;
+    max-width:100%;
+    height:auto;
+    display:block;
+    margin:0 auto 15px auto;
+}
+
+h2{
+    margin-bottom:10px;
+}
+
+.sellos{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+    margin:25px 0;
+}
+
+.sello{
+    width:50px;
+    height:50px;
+    border:2px solid #c00000;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:auto;
+    font-weight:bold;
+}
+
+.recompensas{
+    text-align:left;
+    margin-top:15px;
+}
+
+.recompensas p{
+    margin:8px 0;
+}
+
+.frase{
+    margin-top:20px;
+    font-weight:bold;
+    color:#c00000;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<img src="logo.png" alt="Motocentro Salazar" class="logo">
+
+<h2>🏍️ ¡Bienvenido al Programa de Fidelidad!</h2>
+
+<p>Gracias por registrarte.</p>
+
+<div class="sellos">
+
+<div class="sello">1</div>
+<div class="sello">2</div>
+<div class="sello">3</div>
+<div class="sello">🎁</div>
+<div class="sello">5</div>
+
+<div class="sello">6</div>
+<div class="sello">7</div>
+<div class="sello">💰</div>
+<div class="sello">9</div>
+<div class="sello">🏆</div>
+
+</div>
+
+<div class="recompensas">
+
+<p>🎁 4 sellos → Llavero gratis</p>
+
+<p>💰 8 sellos → 10% de descuento en aceite</p>
+
+<p>🏆 10 sellos → Cambio de aceite + filtro gratis</p>
+
+</div>
+
+<p class="frase">
+🎁 Con Motocentro Salazar siempre ganas.
+</p>
+
+</div>
+
+</body>
+  </html>

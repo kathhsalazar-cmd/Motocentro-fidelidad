@@ -84,7 +84,7 @@ h2{
 <body>
 
 <div class="card">
-
+<div id="infoUsuario" style="color:white;text-align:center;margin-bottom:15px;"></div>
 <img src="logo.png" alt="Motocentro Salazar" class="logo">
 
 <h2>🏍️ ¡Bienvenido al Programa de Fidelidad!</h2>
@@ -122,6 +122,46 @@ h2{
 </p>
 
 </div>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
+const firebaseConfig = {
+  apiKey: "AIzaSyBsHY4BvPE2aE2Xk0WLVzWFn80IZ3B_Vck",
+  authDomain: "motocentro-salazar.firebaseapp.com",
+  projectId: "motocentro-salazar",
+  storageBucket: "motocentro-salazar.firebasestorage.app",
+  messagingSenderId: "400023502193",
+  appId: "1:400023502193:web:a0fe4ef6617de3a9508ad0"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+onAuthStateChanged(auth, async (user) => {
+
+  if (user) {
+    const ref = doc(db, "CLIENTES", user.uid);
+    const snap = await getDoc(ref);
+
+    if (snap.exists()) {
+      const data = snap.data();
+
+      document.getElementById("infoUsuario").innerHTML = `
+        <h3>👤 ${data.nombre}</h3>
+        <p>📞 ${data.celular}</p>
+        <p>✉️ ${data.correo}</p>
+        <h2>⭐ ${data.puntos} sellos</h2>
+      `;
+    }
+
+  } else {
+    window.location.href = "login.html";
+  }
+
+});
+</script>
 </body>
   </html>

@@ -60,7 +60,9 @@ document.getElementById("crearCuenta").addEventListener("click", async () => {
     });
 
     alert("Cuenta creada con éxito 🎉");
-    window.location.href = "tarjeta.html";
+    setTimeout(() => {
+  window.location.href = "tarjeta.html";
+}, 1000);
 
   } catch (error) {
     alert("Error: " + error.message);

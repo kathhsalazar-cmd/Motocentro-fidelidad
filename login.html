@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iniciar Sesión</title>
+</head>
+
+<body style="font-family:Arial;background:#111;color:white;display:flex;justify-content:center;align-items:center;height:100vh;">
+
+<div style="background:white;color:black;padding:20px;border-radius:15px;width:90%;max-width:350px;">
+
+<h2>🔐 Iniciar Sesión</h2>
+
+<input id="correo" type="email" placeholder="Correo" style="width:100%;padding:10px;margin:10px 0;box-sizing:border-box;">
+<input id="password" type="password" placeholder="Contraseña" style="width:100%;padding:10px;margin:10px 0;box-sizing:border-box;">
+
+<button id="loginBtn" style="width:100%;padding:12px;background:red;color:white;border:none;border-radius:8px;cursor:pointer;">
+Entrar
+</button>
+
+<p>🎁 Motocentro Salazar</p>
+
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBsHY4BvPE2aE2Xk0WLVzWFn80IZ3B_Vck",
+  authDomain: "motocentro-salazar.firebaseapp.com",
+  projectId: "motocentro-salazar",
+  storageBucket: "motocentro-salazar.firebasestorage.app",
+  messagingSenderId: "400023502193",
+  appId: "1:400023502193:web:a0fe4ef6617de3a9508ad0"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+document.getElementById("loginBtn").addEventListener("click", async () => {
+
+  const correo = document.getElementById("correo").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    await signInWithEmailAndPassword(auth, correo, password);
+
+    alert("Bienvenido 🎉");
+    window.location.href = "tarjeta.html";
+
+  } catch (error) {
+    alert("Error: " + error.message);
+  }
+
+});
+</script>
+
+</body>
+</html>

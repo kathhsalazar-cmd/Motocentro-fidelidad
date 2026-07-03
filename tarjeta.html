@@ -147,21 +147,30 @@ onAuthStateChanged(auth, async (user) => {
     return;
   }
 
-  const ref = doc(db, "CLIENTES", user.uid);
-  const snap = await getDoc(ref);
+  console.log("USER:", user.uid);
 
-  if (snap.exists()) {
-    const data = snap.data();
+  try {
+    const ref = doc(db, "CLIENTES", user.uid);
+    const snap = await getDoc(ref);
 
-    document.getElementById("infoUsuario").innerHTML = `
-      <h3>👤 ${data.nombre}</h3>
-      <p>📞 ${data.celular}</p>
-      <p>✉️ ${data.correo}</p>
-      <h2>⭐ ${data.puntos} sellos</h2>
-    `;
-  } else {
-    document.getElementById("infoUsuario").innerHTML =
-      "<p style='color:red'>No se encontró el usuario</p>";
+    if (snap.exists()) {
+      const data = snap.data();
+
+      document.getElementById("infoUsuario").innerHTML = `
+        <h3>👤 ${data.nombre}</h3>
+        <p>📞 ${data.celular}</p>
+        <p>✉️ ${data.correo}</p>
+        <h2>⭐ ${data.puntos} sellos</h2>
+      `;
+    } else {
+      document.getElementById("infoUsuario").innerHTML =
+        "<p style='color:red'>NO EXISTE USUARIO EN FIRESTORE</p>";
+
+      console.log("No existe doc en CLIENTES con UID:", user.uid);
+    }
+
+  } catch (e) {
+    console.log("ERROR:", e);
   }
 
 });

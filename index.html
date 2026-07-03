@@ -126,6 +126,28 @@ Iniciar sesión
 </a>
 
 </div>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBsHY4BvPE2aE2Xk0WLVzWFn80IZ3B_Vck",
+    authDomain: "motocentro-salazar.firebaseapp.com",
+    projectId: "motocentro-salazar",
+    storageBucket: "motocentro-salazar.firebasestorage.app",
+    messagingSenderId: "400023502193",
+    appId: "1:400023502193:web:a0fe4ef6617de3a9508ad0",
+    measurementId: "G-SGLES5VRX3"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 </body>
 </html>

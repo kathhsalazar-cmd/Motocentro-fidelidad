@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+p<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -161,9 +161,7 @@ onAuthStateChanged(auth, async (user) => {
     if (snap.exists()) {
       const data = snap.data();
 
-document.getElementById("infoUsuario").innerHTML = `
-  <pre>${JSON.stringify(data, null, 2)}</pre>
-`;
+
     } else {
       document.getElementById("infoUsuario").innerHTML =
         "<p style='color:red'>NO EXISTE USUARIO EN FIRESTORE</p>";
@@ -174,7 +172,12 @@ document.getElementById("infoUsuario").innerHTML = `
   } catch (e) {
     console.log("ERROR:", e);
   }
-
+document.getElementById("infoUsuario").innerHTML = `
+  <h3>👤 ${data.nombre}</h3>
+  <p>📞 ${data.celular}</p>
+  <p>✉️ ${data.correo}</p>
+  <h2>⭐ ${data.puntos} sellos</h2>
+`;
 });
 </script>
 </body>

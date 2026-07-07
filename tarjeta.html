@@ -160,7 +160,11 @@ onAuthStateChanged(auth, async (user) => {
 
     if (snap.exists()) {
       const data = snap.data();
-
+document.getElementById("infoUsuario").innerHTML = `
+  <h3>👤 ${data.nombre}</h3>
+  <p>📞 ${data.celular}</p>
+  <p>✉️ ${data.correo}</p>
+  <h2>⭐ ${data.puntos} sellos</h2>
 
     } else {
       document.getElementById("infoUsuario").innerHTML =
@@ -168,13 +172,6 @@ onAuthStateChanged(auth, async (user) => {
 
       console.log("No existe doc en CLIENTES con UID:", user.uid);
     }
-document.getElementById("infoUsuario").innerHTML = `
-  <h3>👤 ${data.nombre}</h3>
-  <p>📞 ${data.celular}</p>
-  <p>✉️ ${data.correo}</p>
-  <h2>⭐ ${data.puntos} sellos</h2>
-  } catch (e) {
-    console.log("ERROR:", e);
   }
 
 `;

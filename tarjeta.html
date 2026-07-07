@@ -3,85 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mi Tarjeta de Fidelidad</title>
+<title>Tarjeta de Fidelidad | Motocentro Salazar</title>
 
 <style>
+
 *{
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-    margin:0;
-    padding:20px;
-    font-family:Arial,sans-serif;
-    background:#111;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
+background:#111;
+padding:20px;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
 .card{
-    background:white;
-    width:100%;
-    max-width:420px;
-    border-radius:20px;
-    padding:25px;
-    text-align:center;
-    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+background:#fff;
+width:100%;
+max-width:430px;
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+.header{
+background:linear-gradient(135deg,#c00000,#7a0000);
+padding:25px;
+text-align:center;
+color:white;
 }
 
 .logo{
-    width:180px;
-    max-width:100%;
-    height:auto;
-    display:block;
-    margin:0 auto 15px auto;
+width:150px;
+max-width:100%;
+margin-bottom:15px;
 }
 
-h2{
-    margin-bottom:10px;
+.welcome{
+font-size:24px;
+font-weight:bold;
+margin-top:10px;
+}
+
+.sub{
+font-size:14px;
+opacity:.9;
+margin-top:5px;
+}
+
+.content{
+padding:20px;
+}
+
+.user-box{
+background:#f7f7f7;
+border-radius:15px;
+padding:15px;
+margin-bottom:20px;
+text-align:left;
+}
+
+.user-box h3{
+color:#c00000;
+margin-bottom:10px;
+}
+
+.user-info{
+margin:8px 0;
+font-size:14px;
+}
+
+.points-box{
+background:#fff5f5;
+border:2px solid #c00000;
+border-radius:15px;
+padding:15px;
+text-align:center;
+margin-bottom:20px;
+}
+
+.points-number{
+font-size:32px;
+font-weight:bold;
+color:#c00000;
+}
+
+.points-text{
+font-size:14px;
+color:#555;
 }
 
 .sellos{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:10px;
-    margin:25px 0;
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:10px;
+margin-top:20px;
+margin-bottom:20px;
 }
 
 .sello{
-    width:50px;
-    height:50px;
-    border:2px solid #c00000;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:auto;
-    font-weight:bold;
+width:55px;
+height:55px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:auto;
+font-weight:bold;
+font-size:18px;
+border:2px solid #c00000;
+background:white;
+color:#c00000;
+}
+
+.completo{
+background:#c00000;
+color:white;
 }
 
 .recompensas{
-    text-align:left;
-    margin-top:15px;
+margin-top:15px;
 }
 
-.recompensas p{
-    margin:8px 0;
+.reward{
+background:#f7f7f7;
+border-left:5px solid #c00000;
+padding:12px;
+border-radius:10px;
+margin-bottom:10px;
 }
 
-.frase{
-    margin-top:20px;
-    font-weight:bold;
-    color:#c00000;
+.reward-title{
+font-weight:bold;
+margin-bottom:3px;
 }
 
-#infoUsuario{
-    color:black;
-    text-align:center;
-    margin-bottom:15px;
+.footer{
+background:#111;
+color:white;
+padding:15px;
+text-align:center;
+font-weight:bold;
 }
+
 </style>
 </head>
 
@@ -89,52 +159,85 @@ h2{
 
 <div class="card">
 
+<div class="header">
+
+<img src="logo.png" class="logo">
+
+<div class="welcome" id="saludo">
+Hola 👋
+</div>
+
+<div class="sub">
+Programa de Fidelidad Motocentro Salazar
+</div>
+
+</div>
+
+<div class="content">
+
+<div class="user-box">
+
+<h3>Información del Cliente</h3>
+
 <div id="infoUsuario"></div>
 
-<img src="logo.png" alt="Motocentro Salazar" class="logo">
+</div>
 
-<h2>🏍️ ¡Bienvenido al Programa de Fidelidad!</h2>
+<div class="points-box">
 
-<p>Gracias por registrarte.</p>
+<div class="points-number" id="totalSellos">
+0
+</div>
 
-<div class="sellos">
-<div class="sello">1</div>
-<div class="sello">2</div>
-<div class="sello">3</div>
-<div class="sello">🎁</div>
-<div class="sello">5</div>
+<div class="points-text">
+Sellos acumulados
+</div>
 
-<div class="sello">6</div>
-<div class="sello">7</div>
-<div class="sello">🎁</div>
-<div class="sello">9</div>
-<div class="sello">🏆</div>
+</div>
+
+<div class="sellos" id="sellosContainer">
 </div>
 
 <div class="recompensas">
-<p>🎁 4 sellos → Llavero gratis</p>
-<p>🎁 8 sellos → 10% de descuento en aceite</p>
-<p>🏆 10 sellos → Cambio de aceite + filtro gratis</p>
+
+<div class="reward">
+<div class="reward-title">🎁 4 sellos</div>
+Llavero gratis
 </div>
 
-<p class="frase">
-🎁 Con Motocentro Salazar siempre ganas.
-</p>
+<div class="reward">
+<div class="reward-title">🎁 8 sellos</div>
+10% de descuento en aceite
+</div>
+
+<div class="reward">
+<div class="reward-title">🏆 10 sellos</div>
+Cambio de aceite + filtro gratis
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+Con Motocentro Salazar siempre ganas 🏍️
+</div>
 
 </div>
 
 <script type="module">
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBsHY4BvPE2aE2Xk0WLVzWFn80IZ3B_Vck",
-  authDomain: "motocentro-salazar.firebaseapp.com",
-  projectId: "motocentro-salazar",
-  storageBucket: "motocentro-salazar.firebasestorage.app",
-  messagingSenderId: "400023502193",
-  appId: "1:400023502193:web:a0fe4ef6617de3a9508ad0"
+apiKey: "AIzaSyBsHY4BvPE2aE2Xk0WLVzWFn80IZ3B_Vck",
+authDomain: "motocentro-salazar.firebaseapp.com",
+projectId: "motocentro-salazar",
+storageBucket: "motocentro-salazar.firebasestorage.app",
+messagingSenderId: "400023502193",
+appId: "1:400023502193:web:a0fe4ef6617de3a9508ad0"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -143,44 +246,64 @@ const db = getFirestore(app);
 
 onAuthStateChanged(auth, async (user) => {
 
-  if (!user) {
-    window.location.href = "login.html";
-    return;
-  }
+if(!user){
+window.location.href = "login.html";
+return;
+}
 
-  try {
+try{
 
-    const ref = doc(db, "CLIENTES", user.uid);
-    const snap = await getDoc(ref);
+const ref = doc(db,"CLIENTES",user.uid);
+const snap = await getDoc(ref);
 
-    if (snap.exists()) {
+if(snap.exists()){
 
-      const data = snap.data();
+const data = snap.data();
 
-      document.getElementById("infoUsuario").innerHTML = `
-        <h3>👤 ${data.nombre}</h3>
-        <p>📞 ${data.celular}</p>
-        <p>✉️ ${data.correo}</p>
-        <h2>⭐ ${data.puntos} sellos</h2>
-      `;
+document.getElementById("saludo").innerHTML =
+`Hola, ${data.nombre} 👋`;
 
-    } else {
+document.getElementById("infoUsuario").innerHTML = `
+<div class="user-info">📞 ${data.celular}</div>
+<div class="user-info">✉️ ${data.correo}</div>
+`;
 
-      document.getElementById("infoUsuario").innerHTML =
-      "<p style='color:red'>No se encontró el usuario.</p>";
+const puntos = data.puntos || 0;
 
-    }
+document.getElementById("totalSellos").innerText = puntos;
 
-  } catch (error) {
+let htmlSellos = "";
 
-    document.getElementById("infoUsuario").innerHTML =
-    "<p style='color:red'>Error al cargar los datos.</p>";
+for(let i=1;i<=10;i++){
 
-    console.log(error);
+if(i <= puntos){
 
-  }
+htmlSellos += `
+<div class="sello completo">✓</div>
+`;
+
+}else{
+
+htmlSellos += `
+<div class="sello">${i}</div>
+`;
+
+}
+
+}
+
+document.getElementById("sellosContainer").innerHTML = htmlSellos;
+
+}
+
+}catch(error){
+
+console.log(error);
+
+}
 
 });
+
 </script>
 
 </body>

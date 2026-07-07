@@ -1,4 +1,4 @@
-p<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -6,7 +6,6 @@ p<!DOCTYPE html>
 <title>Mi Tarjeta de Fidelidad</title>
 
 <style>
-
 *{
     box-sizing:border-box;
 }
@@ -78,18 +77,20 @@ h2{
     color:#c00000;
 }
 
+#infoUsuario{
+    color:black;
+    text-align:center;
+    margin-bottom:15px;
+}
 </style>
 </head>
 
 <body>
 
 <div class="card">
-<div id="infoUsuario" style="
-color:black;
-text-align:center;
-margin-bottom:15px;
-font-weight:bold;
-"></div>
+
+<div id="infoUsuario"></div>
+
 <img src="logo.png" alt="Motocentro Salazar" class="logo">
 
 <h2>🏍️ ¡Bienvenido al Programa de Fidelidad!</h2>
@@ -97,7 +98,6 @@ font-weight:bold;
 <p>Gracias por registrarte.</p>
 
 <div class="sellos">
-
 <div class="sello">1</div>
 <div class="sello">2</div>
 <div class="sello">3</div>
@@ -109,17 +109,12 @@ font-weight:bold;
 <div class="sello">🎁</div>
 <div class="sello">9</div>
 <div class="sello">🏆</div>
-
 </div>
 
 <div class="recompensas">
-
 <p>🎁 4 sellos → Llavero gratis</p>
-
 <p>🎁 8 sellos → 10% de descuento en aceite</p>
-
 <p>🏆 10 sellos → Cambio de aceite + filtro gratis</p>
-
 </div>
 
 <p class="frase">
@@ -127,6 +122,7 @@ font-weight:bold;
 </p>
 
 </div>
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
@@ -152,30 +148,40 @@ onAuthStateChanged(auth, async (user) => {
     return;
   }
 
-  console.log("USER:", user.uid);
-
   try {
+
     const ref = doc(db, "CLIENTES", user.uid);
     const snap = await getDoc(ref);
 
     if (snap.exists()) {
+
       const data = snap.data();
-document.getElementById("infoUsuario").innerHTML = `
-  <h3>👤 ${data.nombre}</h3>
-  <p>📞 ${data.celular}</p>
-  <p>✉️ ${data.correo}</p>
-  <h2>⭐ ${data.puntos} sellos</h2>
+
+      document.getElementById("infoUsuario").innerHTML = `
+        <h3>👤 ${data.nombre}</h3>
+        <p>📞 ${data.celular}</p>
+        <p>✉️ ${data.correo}</p>
+        <h2>⭐ ${data.puntos} sellos</h2>
+      `;
 
     } else {
-      document.getElementById("infoUsuario").innerHTML =
-        "<p style='color:red'>NO EXISTE USUARIO EN FIRESTORE</p>";
 
-      console.log("No existe doc en CLIENTES con UID:", user.uid);
+      document.getElementById("infoUsuario").innerHTML =
+      "<p style='color:red'>No se encontró el usuario.</p>";
+
     }
+
+  } catch (error) {
+
+    document.getElementById("infoUsuario").innerHTML =
+    "<p style='color:red'>Error al cargar los datos.</p>";
+
+    console.log(error);
+
   }
 
-`;
 });
 </script>
+
 </body>
-  </html>
+</html>

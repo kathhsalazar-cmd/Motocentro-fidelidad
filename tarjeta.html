@@ -309,14 +309,18 @@ document.getElementById("infoUsuario").innerHTML = `
 `;
 
 const puntos = data.puntos || 0;
-  if(puntos >= 4){
+if(puntos >= 4 && !data.premio4Avisado){
 
 mostrarPremio(
-"🎉 ¡FELICIDADES! 🎉",
-"Ya puedes retirar tu llavero gratis en Motocentro Salazar"
+"🎊🎉 ¡FELICIDADES! 🎉🎊",
+"🎁 Has completado 4 sellos. Ya puedes retirar tu llavero gratis en Motocentro Salazar 🏍️"
 );
 
-  }
+await updateDoc(ref,{
+premio4Avisado:true
+});
+
+}
 document.getElementById("totalSellos").innerText = puntos;
 
 let htmlSellos = "";

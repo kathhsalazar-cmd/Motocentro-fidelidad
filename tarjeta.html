@@ -321,6 +321,31 @@ premio4Avisado:true
 });
 
 }
+if(puntos >= 8 && !data.premio8Avisado){
+
+    mostrarPremio(
+        "🎉 ¡FELICIDADES! 🎉",
+        "🏍️ Has obtenido un 10% de descuento en aceite."
+    );
+
+    await updateDoc(ref,{
+        premio8Avisado:true
+    });
+
+}
+
+if(puntos >= 10 && !data.premio10Avisado){
+
+    mostrarPremio(
+        "🏆 ¡GRAN PREMIO! 🏆",
+        "Cambio de aceite + filtro GRATIS. ¡Gracias por tu fidelidad!"
+    );
+
+    await updateDoc(ref,{
+        premio10Avisado:true
+    });
+
+}
 document.getElementById("totalSellos").innerText = puntos;
 
 let htmlSellos = "";

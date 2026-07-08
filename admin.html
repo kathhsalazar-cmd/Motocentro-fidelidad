@@ -80,7 +80,6 @@ font-weight:bold;
 
 <script type="module">
 
-
 import { initializeApp } 
 from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
 
@@ -113,7 +112,7 @@ const db = getFirestore(app);
 
 
 
-let clientes=[];
+let clientes = [];
 
 
 
@@ -133,29 +132,37 @@ id:item.id,
 
 });
 
+console.log("Clientes cargados:", clientes);
+
 }
 
 
-cargarClientes();
+
+const buscar = document.getElementById("buscar");
+
+const resultado = document.getElementById("resultado");
 
 
 
-const buscar=document.getElementById("buscar");
-const resultado=document.getElementById("resultado");
+async function iniciar(){
 
+await cargarClientes();
 
 
 buscar.addEventListener("input",()=>{
 
 
-let texto=buscar.value.toLowerCase();
+let texto = buscar.value.toLowerCase();
 
 
 resultado.innerHTML="";
 
 
 clientes
-.filter(c=>c.nombre.toLowerCase().includes(texto))
+.filter(c => 
+c.nombre && 
+c.nombre.toLowerCase().includes(texto)
+)
 .forEach(c=>{
 
 
@@ -164,18 +171,18 @@ resultado.innerHTML += `
 
 <div class="cliente">
 
-<b>👤 ${c.nombre}</b><br>
+<b>👤 ${c.nombre}</b><br><br>
 
-📞 ${c.celular}<br>
+📞 ${c.celular || ""}<br>
 
-✉️ ${c.correo}<br>
+✉️ ${c.correo || ""}<br><br>
 
-⭐ Puntos actuales: ${c.puntos || 0}
+⭐ Sellos actuales: ${c.puntos || 0}
 
 
 <button onclick="sumarPunto('${c.id}',${c.puntos || 0})">
 
-➕ Agregar punto
+➕ Agregar sello
 
 </button>
 
@@ -185,11 +192,13 @@ resultado.innerHTML += `
 
 `;
 
-
 });
 
 
 });
+
+
+}
 
 
 
@@ -206,7 +215,7 @@ puntos:puntos+1
 });
 
 
-alert("Punto agregado ✅");
+alert("Sello agregado correctamente ✅");
 
 
 location.reload();
@@ -214,6 +223,9 @@ location.reload();
 
 }
 
+
+
+iniciar();
 
 
 </script>

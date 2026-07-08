@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Login | Motocentro Salazar</title>
+
+<style>
+
+body{
+font-family:Arial,sans-serif;
+background:#111;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.login{
+background:white;
+padding:30px;
+border-radius:20px;
+width:90%;
+max-width:350px;
+}
+
+h1{
+text-align:center;
+color:#c00000;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:10px;
+border:1px solid #ccc;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#c00000;
+color:white;
+border:none;
+border-radius:10px;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<div class="login">
+
+<h1>Motocentro Salazar</h1>
+
+<h3>Administrador</h3>
+
+<input id="correo" placeholder="Correo">
+
+<input id="clave" type="password" placeholder="Contraseña">
+
+<button onclick="login()">
+Ingresar
+</button>
+
+</div>
+
+
+
+<script type="module">
+
+import { initializeApp } 
+from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+
+import { 
+getAuth,
+signInWithEmailAndPassword
+}
+from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
+
+
+
+const firebaseConfig = {
+apiKey: "AIzaSyBsHY4BvPE2aE2Xk0WLVzWFn80IZ3B_Vck",
+authDomain: "motocentro-salazar.firebaseapp.com",
+projectId: "motocentro-salazar",
+storageBucket: "motocentro-salazar.firebasestorage.app",
+messagingSenderId: "400023502193",
+appId: "1:400023502193:web:a0fe4ef6617de3a9508ad0"
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+
+
+window.login = async function(){
+
+let correo = document.getElementById("correo").value;
+
+let clave = document.getElementById("clave").value;
+
+
+try{
+
+await signInWithEmailAndPassword(auth,correo,clave);
+
+
+window.location.href="admin.html";
+
+
+}catch(error){
+
+alert("Correo o contraseña incorrectos");
+
+}
+
+
+}
+
+</script>
+
+
+</body>
+</html>

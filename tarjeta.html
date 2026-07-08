@@ -264,7 +264,7 @@ Aceptar
 
 </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
@@ -379,6 +379,7 @@ console.log(error);
 }
 
 });
+
 function mostrarPremio(titulo,texto){
 
 document.getElementById("tituloPremio").innerText = titulo;
@@ -387,8 +388,13 @@ document.getElementById("textoPremio").innerText = texto;
 
 document.getElementById("premio").style.display = "flex";
 
-}
+confetti({
+    particleCount: 200,
+    spread: 100,
+    origin: { y: 0.6 }
+});
 
+}
 
 window.cerrarPremio = function(){
 
